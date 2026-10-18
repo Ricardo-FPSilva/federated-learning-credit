@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "benchmark-v1",
+  "status": "proposed",
+  "kind": "corrected",
+  "description": "Proposta documental do benchmark corrigido. Não é configuração executável, autorização de treinamento ou registro de resultado.",
+  "source_refs": [],
+  "rules": [
+    "Separação estratificada 60/20/20 de treino/validação/teste; auditar duplicatas e grupos antes de congelar índices.",
+    "Mesmos índices de split para todos os modelos e seeds; teste reservado à avaliação final.",
+    "Ajustar mediana, moda, one-hot encoding e padronização exclusivamente no treino; congelar e persistir preprocessing e ordem de features.",
+    "Usar preprocessing global de treino compartilhado, explicitamente rotulado como cenário controlado, não pipeline privado de ponta a ponta.",
+    "Comparar majoritário, regressão logística, Random Forest, MLP centralizada, MLP FedAvg e três MLPs locais sem ensemble implícito.",
+    "Propor cinco seeds de treinamento 42–46, split 42, validação 43 e partição 44; controlar e registrar streams por cliente/round.",
+    "MLPs: entrada dinâmica→16→8→1, batch 32, Adam 0.01, dez blocos de cinco épocas com reinício do otimizador; FedAvg com participação 3/3.",
+    "Calcular loss de avaliação pela soma ponderada por tamanho de batch dividida pelo número total de exemplos.",
+    "Usar checkpoint final e threshold estrito >0.5; sem tuning, seleção da melhor seed ou otimização no teste.",
+    "Registrar accuracy, precision, recall, F1, Average Precision, matriz de confusão e custo; distinguir AP de PR-AUC trapezoidal.",
+    "Avaliar modelos locais no teste global e no subconjunto do respectivo cliente; comparar modelos globais nos mesmos subconjuntos.",
+    "Publicar valores por seed, dispersão e diferenças pareadas; não tratar rounds como réplicas independentes.",
+    "Registrar artefatos, versões, hardware, recursos, predições e falhas, sem sobrescrever execuções."
+  ],
+  "limitations": [
+    "Protocolo ainda proposto; nenhum benchmark foi implementado ou executado na E0.",
+    "One-hot e split 60/20/20 são mudanças adicionais: diferenças para o histórico não isolam o efeito da correção de leakage/loss.",
+    "Modelos locais recebem informação indireta das estatísticas globais das features.",
+    "O holdout é interno; não comprova generalização externa, temporal ou institucional.",
+    "Cinco seeds em um split não estabelecem superioridade estatística populacional.",
+    "Superar 88% não é critério de aceite."
+  ]
+}

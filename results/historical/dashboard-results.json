@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "history",
+  "artifact_id": "historical-dashboard-results",
+  "evidence_kind": "historical_documented",
+  "source_refs": [
+    {
+      "commit": "da6612a6af626c51b91061752218655817b671d1",
+      "blob": "688e45f0219a6dad3f1da624d8413928cf8e485c",
+      "path": "analysis_dashboard/script.js",
+      "line_start": 2,
+      "line_end": 5
+    }
+  ],
+  "run_id": null,
+  "evaluation_scope": "unknown",
+  "client_id": null,
+  "sample_count": null,
+  "step_type": "round",
+  "records": [
+    {"step": 1, "metrics": [
+      {"name": "accuracy", "value": 0.8398, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8398"},
+      {"name": "f1", "value": 0.4824, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.4824"},
+      {"name": "bce_loss", "value": 0.3916, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3916"}
+    ]},
+    {"step": 2, "metrics": [
+      {"name": "accuracy", "value": 0.8549, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8549"},
+      {"name": "f1", "value": 0.5286, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.5286"},
+      {"name": "bce_loss", "value": 0.3655, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3655"}
+    ]},
+    {"step": 3, "metrics": [
+      {"name": "accuracy", "value": 0.8607, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8607"},
+      {"name": "f1", "value": 0.5608, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.5608"},
+      {"name": "bce_loss", "value": 0.3550, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3550"}
+    ]},
+    {"step": 4, "metrics": [
+      {"name": "accuracy", "value": 0.8708, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8708"},
+      {"name": "f1", "value": 0.5523, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.5523"},
+      {"name": "bce_loss", "value": 0.3544, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3544"}
+    ]},
+    {"step": 5, "metrics": [
+      {"name": "accuracy", "value": 0.8750, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8750"},
+      {"name": "f1", "value": 0.5895, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.5895"},
+      {"name": "bce_loss", "value": 0.3484, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3484"}
+    ]},
+    {"step": 6, "metrics": [
+      {"name": "accuracy", "value": 0.8708, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8708"},
+      {"name": "f1", "value": 0.5444, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.5444"},
+      {"name": "bce_loss", "value": 0.3722, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3722"}
+    ]},
+    {"step": 7, "metrics": [
+      {"name": "accuracy", "value": 0.8784, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8784"},
+      {"name": "f1", "value": 0.6113, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.6113"},
+      {"name": "bce_loss", "value": 0.3738, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3738"}
+    ]},
+    {"step": 8, "metrics": [
+      {"name": "accuracy", "value": 0.8750, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8750"},
+      {"name": "f1", "value": 0.6027, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.6027"},
+      {"name": "bce_loss", "value": 0.3491, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3491"}
+    ]},
+    {"step": 9, "metrics": [
+      {"name": "accuracy", "value": 0.8742, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8742"},
+      {"name": "f1", "value": 0.5989, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.5989"},
+      {"name": "bce_loss", "value": 0.3633, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3633"}
+    ]},
+    {"step": 10, "metrics": [
+      {"name": "accuracy", "value": 0.8800, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.8800"},
+      {"name": "f1", "value": 0.6324, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.6324"},
+      {"name": "bce_loss", "value": 0.3807, "unit": "loss", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.3807"}
+    ]}
+  ],
+  "notes": [
+    "Transcrição das constantes JavaScript; não é log ou execução reproduzida.",
+    "LOSS é identificada como bce_loss pelo contexto da implementação PyTorch, mas a definição fica as_reported: a origem experimental não está comprovada.",
+    "O código histórico faz média das médias de loss por batch; não assumir BCE corrigida por exemplo.",
+    "A diferença para o README no round 1 e a precisão diferente dos F1 foram preservadas; não há regra comprovada de arredondamento comum.",
+    "Não há comprovação de que README e dashboard correspondam à mesma execução."
+  ]
+}

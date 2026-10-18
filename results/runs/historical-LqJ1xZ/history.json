@@ -1,0 +1,319 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "history",
+  "artifact_id": "historical-LqJ1xZ-history",
+  "evidence_kind": "historical_rerun",
+  "source_refs": [
+    {
+      "commit": "725f203d0bdcfec1a2c6e5fcb95a258562d7597a",
+      "blob": "e477a47befbe01b9b83c9cd74e4100e54774b81b",
+      "path": "results/runs/historical-LqJ1xZ/stdout.log",
+      "line_start": 25,
+      "line_end": 56
+    }
+  ],
+  "run_id": "historical-LqJ1xZ",
+  "evaluation_scope": "test",
+  "client_id": null,
+  "sample_count": 1192,
+  "step_type": "round",
+  "records": [
+    {
+      "step": 1,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.8489932885906042,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.4705882352941176,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.37982155931623357,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.8573825503355704,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.543010752688172,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.3627481474296042,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.8640939597315436,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.5714285714285714,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.33420010754152346,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.8733221476510067,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.56231884057971,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.3463896248293551,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.8716442953020134,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.5963060686015831,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.3397846184670925,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    },
+    {
+      "step": 6,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.8800335570469798,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.6103542234332424,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.31610243610645594,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    },
+    {
+      "step": 7,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.8859060402684564,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.6284153005464481,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.3078842729722199,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.8817114093959731,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.6259946949602122,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.31222483564756426,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    },
+    {
+      "step": 9,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.8825503355704698,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.6315789473684209,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.30869895758989613,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    },
+    {
+      "step": 10,
+      "metrics": [
+        {
+          "name": "accuracy",
+          "value": 0.87751677852349,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "f1",
+          "value": 0.6054054054054054,
+          "unit": "fraction",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+          "undefined_reason": null,
+          "reported_literal": null
+        },
+        {
+          "name": "bce_loss",
+          "value": 0.3189521301537752,
+          "unit": "loss",
+          "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+          "undefined_reason": null,
+          "reported_literal": null
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Reexecução do protocolo histórico; distinta dos resultados históricos documentados.",
+    "Imputação e LabelEncoder foram ajustados antes do split, preservando o leakage histórico.",
+    "Os três clientes avaliaram o mesmo conjunto global de teste com 1192 amostras.",
+    "Accuracy e F1 são médias ponderadas das métricas reportadas pelos clientes; F1 não deriva de uma matriz de confusão global única.",
+    "A loss local é média não ponderada das médias dos batches; a loss distribuída agrega esses valores por número de amostras."
+  ]
+}

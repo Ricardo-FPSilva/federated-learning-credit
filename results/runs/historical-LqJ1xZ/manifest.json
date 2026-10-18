@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "manifest",
+  "artifact_id": "historical-LqJ1xZ-manifest",
+  "evidence_kind": "historical_rerun",
+  "source_refs": [
+    {
+      "commit": "725f203d0bdcfec1a2c6e5fcb95a258562d7597a",
+      "blob": "e477a47befbe01b9b83c9cd74e4100e54774b81b",
+      "path": "results/runs/historical-LqJ1xZ/stdout.log",
+      "line_start": 1,
+      "line_end": 61
+    },
+    {
+      "commit": "725f203d0bdcfec1a2c6e5fcb95a258562d7597a",
+      "blob": "ff900130191b81fd4e9e32f076f20c45f0bbb6e1",
+      "path": "results/runs/historical-LqJ1xZ/stderr.log",
+      "line_start": 1,
+      "line_end": 254
+    }
+  ],
+  "run_id": "historical-LqJ1xZ",
+  "protocol_id": "historical-v1",
+  "comparison_group_id": null,
+  "status": "completed",
+  "source_commit": "725f203d0bdcfec1a2c6e5fcb95a258562d7597a",
+  "source_dirty": null,
+  "source_files": {
+    "README.md": "0de21b77c237d562b344a58a4c9193157f3c9ec1372a118193c8953aa8a57c1d",
+    "hmeq.csv": "dfdbc2b7cdf728a15b53e323cde6127995715dfa6b178bd3c1e3d9916d0367aa",
+    "data_analysis.py": "3baa3ee475947e49e2f664baf7569738ce4923a550c1ec19c91e9a23a3720cac",
+    "machine_learning.py": "eb0058f4d85622f50f390063951c38a63f0d0def389a4af9380af0a2cf9e04f0"
+  },
+  "dataset": {
+    "id": "hmeq",
+    "sha256": "dfdbc2b7cdf728a15b53e323cde6127995715dfa6b178bd3c1e3d9916d0367aa",
+    "split_id": null,
+    "partition_id": null,
+    "sizes": {
+      "train": 4768,
+      "test": 1192
+    }
+  },
+  "model": {
+    "family": "mlp_federated",
+    "scope": "global",
+    "client_id": null
+  },
+  "seeds": {
+    "split": 42,
+    "validation": null,
+    "partition": null,
+    "training": null
+  },
+  "environment": {
+    "python": "3.12.14",
+    "packages": {
+      "aiosignal": "1.4.0",
+      "attrs": "26.1.0",
+      "certifi": "2026.7.22",
+      "cffi": "2.1.1",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.0",
+      "cloudpickle": "3.1.2",
+      "cryptography": "44.0.3",
+      "filelock": "4.2.2",
+      "flwr": "1.17.0",
+      "frozenlist": "1.8.0",
+      "fsspec": "2026.9.0",
+      "grpcio": "1.84.0",
+      "idna": "3.20",
+      "iterators": "0.0.2",
+      "jinja2": "3.1.6",
+      "joblib": "1.6.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "markdown-it-py": "4.2.0",
+      "markupsafe": "3.0.4",
+      "mdurl": "0.1.2",
+      "mpmath": "1.3.0",
+      "msgpack": "1.2.3",
+      "networkx": "3.7",
+      "numpy": "1.26.4",
+      "packaging": "26.3",
+      "pandas": "2.2.3",
+      "pathspec": "0.12.1",
+      "protobuf": "4.25.6",
+      "pycparser": "3.11",
+      "pycryptodome": "3.24.1",
+      "pygments": "2.21.0",
+      "python-dateutil": "2.9.0.post0",
+      "pytz": "2026.5",
+      "pyyaml": "6.0.3",
+      "ray": "2.31.0",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rich": "13.9.4",
+      "rpds-py": "2026.9.1",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.17.1",
+      "setuptools": "84.0.0",
+      "shellingham": "1.5.4",
+      "six": "1.17.0",
+      "sympy": "1.13.1",
+      "threadpoolctl": "3.7.0",
+      "tomli": "2.5.0",
+      "tomli-w": "1.2.0",
+      "torch": "2.5.1+cpu",
+      "typer": "0.12.5",
+      "typing-extensions": "4.16.0",
+      "tzdata": "2026.5",
+      "urllib3": "2.8.0"
+    },
+    "platform": "Linux-6.12.113+deb13-amd64-x86_64-with-glibc2.41",
+    "hardware": "x86_64; Ray exposed 12 CPU resources",
+    "threads": 12
+  },
+  "preprocessing": null,
+  "decision": {
+    "positive_label": 1,
+    "threshold": 0.5,
+    "operator": ">"
+  },
+  "configuration": {
+    "clients": 3,
+    "rounds": 10,
+    "local_epochs": 5,
+    "batch_size": 32,
+    "learning_rate": 0.01,
+    "optimizer": "Adam recreated for each client fit call",
+    "aggregation": "FedAvg",
+    "client_resources": {
+      "num_cpus": 1,
+      "num_gpus": 0.0
+    },
+    "train_samples_per_client": [
+      1590,
+      1589,
+      1589
+    ],
+    "preprocessing": "median/mode imputation and LabelEncoder before split; StandardScaler fit on train"
+  },
+  "artifacts": {
+    "commit-txt": {
+      "path": "commit.txt",
+      "sha256": "3a9ff203374cdfabce126750cc9f1d07b471d7412dece1d5baa36c0ef017f40c"
+    },
+    "exit-code-txt": {
+      "path": "exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "source-hashes-txt": {
+      "path": "source-hashes.txt",
+      "sha256": "f6d9fab6e706d2790a3b8bd61117af604dd4e3d2bf2884c195d7a7f4302f9636"
+    },
+    "stderr-log": {
+      "path": "stderr.log",
+      "sha256": "95b21f0e3231d1be44f30e4a797d71f96e3058cd5d21bba489fd835e067a5bab"
+    },
+    "stdout-log": {
+      "path": "stdout.log",
+      "sha256": "c91026ccce7d1103dfeb9d9fbe22a2b40b201457d16e5cbd72a99f9ee6149da7"
+    },
+    "time-txt": {
+      "path": "time.txt",
+      "sha256": "5baba448e529134b168c0f0197be551194f0bb33ce79da03e35753b6a0c0e22a"
+    },
+    "history": {
+      "path": "history.json",
+      "sha256": "fe7791f07f484fb3069d1f3e4f700d230343fb85d266b38d48bf3d83bfd63527"
+    },
+    "metrics": {
+      "path": "metrics.json",
+      "sha256": "11442f7c7b7642a8ed4fe720e2a4eb9be91d0d3b34c2c4c810f707b8a07f33c6"
+    }
+  },
+  "notes": [
+    "Ambiente reconstruído; não comprovado como ambiente original da publicação.",
+    "Training seed é null porque não há evidência de sua fixação.",
+    "Nenhum checkpoint, predição ou matriz de confusão foi produzido pelo script histórico.",
+    "A execução terminou com exit code 0 e dez rounds, mas não constitui reprodução numérica exata dos valores publicados.",
+    "source_dirty é null porque o estado do working tree no momento da execução não foi preservado."
+  ]
+}

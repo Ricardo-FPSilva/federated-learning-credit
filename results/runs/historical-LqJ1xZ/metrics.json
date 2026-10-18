@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "metrics",
+  "artifact_id": "historical-LqJ1xZ-metrics",
+  "evidence_kind": "historical_rerun",
+  "source_refs": [
+    {
+      "commit": "725f203d0bdcfec1a2c6e5fcb95a258562d7597a",
+      "blob": "e477a47befbe01b9b83c9cd74e4100e54774b81b",
+      "path": "results/runs/historical-LqJ1xZ/stdout.log",
+      "line_start": 25,
+      "line_end": 61
+    }
+  ],
+  "run_id": "historical-LqJ1xZ",
+  "evaluation_scope": "test",
+  "client_id": null,
+  "sample_count": 1192,
+  "values": [
+    {
+      "name": "accuracy",
+      "value": 0.87751677852349,
+      "unit": "fraction",
+      "definition": "Flower distributed evaluate weighted mean by client test sample count; all three clients evaluated the same 1192-sample global test set",
+      "undefined_reason": null,
+      "reported_literal": null
+    },
+    {
+      "name": "f1",
+      "value": 0.6054054054054054,
+      "unit": "fraction",
+      "definition": "Flower distributed evaluate weighted mean by client test sample count of client F1 values; not F1 computed from one global confusion matrix; all clients used the same global test set",
+      "undefined_reason": null,
+      "reported_literal": null
+    },
+    {
+      "name": "bce_loss",
+      "value": 0.3189521301537752,
+      "unit": "loss",
+      "definition": "Flower distributed evaluate weighted mean by client test sample count; each client value is the unweighted mean of BCELoss batch means, so the shorter final batch is over-weighted",
+      "undefined_reason": null,
+      "reported_literal": null
+    }
+  ],
+  "confusion_matrix": null,
+  "resources": {
+    "training_seconds": null,
+    "total_seconds": 30.944,
+    "peak_memory_bytes": null,
+    "measurement_scope": "total process wall-clock duration from time.txt; not training-only"
+  }
+}

@@ -1,0 +1,254 @@
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.simulation.start_simulation() is deprecated.
+	Instead, use the `flwr run` CLI command to start a local simulation in your Flower app, as shown for example below:
+
+		$ flwr new  # Create a new Flower app from a template
+
+		$ flwr run  # Run the Flower app in Simulation Mode
+
+	Using `start_simulation()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[92mINFO [0m:      Starting Flower simulation, config: num_rounds=10, no round_timeout
+2026-10-18 12:45:33,341	INFO worker.py:1771 -- Started a local Ray instance.
+[92mINFO [0m:      Flower VCE: Ray initialized with resources: {'CPU': 12.0, 'node:__internal_head__': 1.0, 'object_store_memory': 3003543552.0, 'node:192.168.100.38': 1.0, 'memory': 6007087104.0}
+[92mINFO [0m:      Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[92mINFO [0m:      Flower VCE: Resources for each Virtual Client: {'num_cpus': 1, 'num_gpus': 0.0}
+[92mINFO [0m:      Flower VCE: Creating VirtualClientEngineActorPool with 12 actors
+[92mINFO [0m:      [INIT]
+[92mINFO [0m:      Requesting initial parameters from one random client
+[92mINFO [0m:      Received initial parameters from one random client
+[92mINFO [0m:      Starting evaluation of initial global parameters
+[92mINFO [0m:      Evaluation returned no results (`None`)
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 1]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22589)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m             This is a deprecated feature. It will be removed
+[36m(ClientAppActor pid=22589)[0m             entirely in future versions of Flower.
+[36m(ClientAppActor pid=22589)[0m         
+[36m(ClientAppActor pid=22589)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m             This is a deprecated feature. It will be removed
+[36m(ClientAppActor pid=22589)[0m             entirely in future versions of Flower.
+[36m(ClientAppActor pid=22589)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 2]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 3]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 4]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 5]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 6]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 7]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 8]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 9]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22587)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`[32m [repeated 51x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(ClientAppActor pid=22587)[0m             This is a deprecated feature. It will be removed[32m [repeated 51x across cluster][0m
+[36m(ClientAppActor pid=22587)[0m             entirely in future versions of Flower.[32m [repeated 51x across cluster][0m
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 10]
+[92mINFO [0m:      configure_fit: strategy sampled 3 clients (out of 3)
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[92mINFO [0m:      aggregate_fit: received 3 results and 0 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 3 clients (out of 3)
+[92mINFO [0m:      aggregate_evaluate: received 3 results and 0 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [SUMMARY]
+[92mINFO [0m:      Run finished 10 round(s) in 5.52s
+[92mINFO [0m:      	History (loss, distributed):
+[92mINFO [0m:      		round 1: 0.37982155931623357
+[92mINFO [0m:      		round 2: 0.3627481474296042
+[92mINFO [0m:      		round 3: 0.33420010754152346
+[92mINFO [0m:      		round 4: 0.3463896248293551
+[92mINFO [0m:      		round 5: 0.3397846184670925
+[92mINFO [0m:      		round 6: 0.31610243610645594
+[92mINFO [0m:      		round 7: 0.3078842729722199
+[92mINFO [0m:      		round 8: 0.31222483564756426
+[92mINFO [0m:      		round 9: 0.30869895758989613
+[92mINFO [0m:      		round 10: 0.3189521301537752
+[92mINFO [0m:      	History (metrics, distributed, evaluate):
+[92mINFO [0m:      	{'accuracy': [(1, 0.8489932885906042),
+[92mINFO [0m:      	              (2, 0.8573825503355704),
+[92mINFO [0m:      	              (3, 0.8640939597315436),
+[92mINFO [0m:      	              (4, 0.8733221476510067),
+[92mINFO [0m:      	              (5, 0.8716442953020134),
+[92mINFO [0m:      	              (6, 0.8800335570469798),
+[92mINFO [0m:      	              (7, 0.8859060402684564),
+[92mINFO [0m:      	              (8, 0.8817114093959731),
+[92mINFO [0m:      	              (9, 0.8825503355704698),
+[92mINFO [0m:      	              (10, 0.87751677852349)],
+[92mINFO [0m:      	 'f1': [(1, 0.4705882352941176),
+[92mINFO [0m:      	        (2, 0.543010752688172),
+[92mINFO [0m:      	        (3, 0.5714285714285714),
+[92mINFO [0m:      	        (4, 0.56231884057971),
+[92mINFO [0m:      	        (5, 0.5963060686015831),
+[92mINFO [0m:      	        (6, 0.6103542234332424),
+[92mINFO [0m:      	        (7, 0.6284153005464481),
+[92mINFO [0m:      	        (8, 0.6259946949602122),
+[92mINFO [0m:      	        (9, 0.6315789473684209),
+[92mINFO [0m:      	        (10, 0.6054054054054054)]}
+[92mINFO [0m:      
+[36m(ClientAppActor pid=22587)[0m 
+[36m(ClientAppActor pid=22587)[0m         
+[36m(ClientAppActor pid=22588)[0m 
+[36m(ClientAppActor pid=22588)[0m         
+[36m(ClientAppActor pid=22589)[0m 
+[36m(ClientAppActor pid=22589)[0m         
+[36m(ClientAppActor pid=22589)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`[32m [repeated 8x across cluster][0m
+[36m(ClientAppActor pid=22589)[0m             This is a deprecated feature. It will be removed[32m [repeated 8x across cluster][0m
+[36m(ClientAppActor pid=22589)[0m             entirely in future versions of Flower.[32m [repeated 8x across cluster][0m

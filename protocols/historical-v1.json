@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "historical-v1",
+  "status": "documented",
+  "kind": "historical",
+  "description": "Descrição documental da implementação preservada. Não comprova ambiente nem execução dos resultados publicados.",
+  "source_refs": [
+    {
+      "commit": "725f203d0bdcfec1a2c6e5fcb95a258562d7597a",
+      "blob": "b21af9fc1c310d2f9879ee2260c30c86371c60b4",
+      "path": "README.md",
+      "line_start": 102,
+      "line_end": 140
+    },
+    {
+      "commit": "725f203d0bdcfec1a2c6e5fcb95a258562d7597a",
+      "blob": "3fe7d3fe44ddd2fa281fc5037a07432af87b9701",
+      "path": "machine_learning.py",
+      "line_start": 52,
+      "line_end": 434
+    }
+  ],
+  "rules": [
+    "Preservar hmeq.csv, README.md, data_analysis.py e machine_learning.py sem alterações.",
+    "O código faz imputação por mediana/moda e LabelEncoder antes do split estratificado 80/20; StandardScaler é ajustado apenas no treino.",
+    "A seed 42 está configurada no split; não implica seed de inicialização ou de treinamento registrada.",
+    "A arquitetura é 12→16→8→1, com ReLU nas ocultas, Sigmoid na saída, BCELoss e Adam com learning rate 0.01.",
+    "Treino dividido por np.array_split em três clientes; dez rounds e cinco épocas locais por round, batch 32.",
+    "Adam é recriado em cada chamada de treino local.",
+    "O teste global é disponibilizado a cada cliente; a loss de avaliação é média das médias dos batches.",
+    "A classificação usa probabilidade estritamente maior que 0.5 para BAD=1.",
+    "Reexecutar sem corrigir esse comportamento; qualquer adaptação exige identificação separada."
+  ],
+  "limitations": [
+    "Há leakage na imputação/codificação antes do split.",
+    "Há ponderação inadequada do último batch na loss de avaliação.",
+    "Não há lockfile, checkpoint ou logs originais preservados.",
+    "O ambiente de execução e a origem exata das métricas publicadas não foram estabelecidos.",
+    "Não há garantia de reprodução numérica exata dos valores publicados."
+  ]
+}

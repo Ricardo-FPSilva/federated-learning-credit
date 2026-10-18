@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "history",
+  "artifact_id": "historical-readme-results",
+  "evidence_kind": "historical_documented",
+  "source_refs": [
+    {
+      "commit": "725f203d0bdcfec1a2c6e5fcb95a258562d7597a",
+      "blob": "b21af9fc1c310d2f9879ee2260c30c86371c60b4",
+      "path": "README.md",
+      "line_start": 132,
+      "line_end": 140
+    }
+  ],
+  "run_id": null,
+  "evaluation_scope": "unknown",
+  "client_id": null,
+  "sample_count": null,
+  "step_type": "round",
+  "records": [
+    {"step": 1, "metrics": [
+      {"name": "accuracy", "value": 0.8397, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "83.97%"},
+      {"name": "f1", "value": 0.482, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.482"}
+    ]},
+    {"step": 5, "metrics": [
+      {"name": "accuracy", "value": 0.875, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "87.50%"},
+      {"name": "f1", "value": 0.589, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.589"}
+    ]},
+    {"step": 10, "metrics": [
+      {"name": "accuracy", "value": 0.88, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "88.00%"},
+      {"name": "f1", "value": 0.632, "unit": "fraction", "definition": "as_reported", "undefined_reason": null, "reported_literal": "0.632"}
+    ]}
+  ],
+  "notes": [
+    "Transcrição documental da tabela do README; não é resultado de execução realizada na E0.",
+    "Acurácia convertida de percentual para fração sem acréscimo de precisão; literal original preservado.",
+    "Não há loss nem os demais rounds nesta fonte; não foram preenchidos.",
+    "A tabela declara três clientes, dez rounds e cinco épocas locais; ambiente efetivo e seeds da execução não estão comprovados.",
+    "O dashboard declara 0.8398 no round 1, enquanto este README declara 83.97%; fontes mantidas separadas."
+  ]
+}

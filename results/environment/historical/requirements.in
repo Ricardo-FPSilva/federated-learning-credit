@@ -1,0 +1,9 @@
+# Ambiente RECONSTRUÍDO para investigar o código histórico intacto.
+# Não representa as versões originais comprovadas do experimento publicado.
+# Resolver conjuntamente com Python 3.12 e uv --torch-backend cpu.
+flwr[simulation]==1.17.0
+numpy==1.26.4
+pandas==2.2.3
+scikit-learn==1.5.2
+protobuf==4.25.6
+torch==2.5.1+cpu
