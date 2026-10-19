@@ -1,8 +1,11 @@
 """Testes E3.1B.2 — componentes MLP, sem benchmark ou artefatos oficiais.
 
 Treinos usam somente dados sintéticos, seeds locais e uma função de shuffle
-injetada. As seeds oficiais aparecem apenas em derivação, permutação e criação
-da inicialização emparelhada, nunca em ``train_blocks``. Testes que dependem de
+injetada. Os testes podem usar as seeds oficiais 42–46 em derivação,
+permutação, inicialização emparelhada e chamadas mínimas a ``train_blocks``
+para validar gates e o pareamento ``training_seed``/``initial_state``, mas
+nunca executam o benchmark oficial: agenda congelada, dataset real e
+artefatos oficiais permanecem fora destes testes. Testes que dependem de
 PyTorch são pulados no ambiente stdlib e executados no venv histórico.
 """
 
@@ -12,6 +15,7 @@ import random
 import unittest
 from unittest import mock
 
+from research.benchmark import mlp as mlp_module
 from research.benchmark.data import DatasetView
 from research.benchmark.evaluation import evaluate_global, evaluate_scores
 from research.benchmark.mlp import (
@@ -32,7 +36,7 @@ from research.benchmark.mlp import (
     theoretical_costs,
     train_blocks,
 )
-from research.benchmark.seeding import SeedingError, shuffle_seed
+from research.benchmark.seeding import SeedingError, TRAINING_SEEDS, shuffle_seed
 
 HAS_TORCH = importlib.util.find_spec("torch") is not None
 
@@ -68,6 +72,7 @@ class FrozenMLPContractTests(unittest.TestCase):
         self.assertEqual(EPOCHS_PER_BLOCK, 5)
         self.assertEqual(BATCH_SIZE, 32)
         self.assertEqual(LEARNING_RATE, 0.01)
+        self.assertEqual(TRAINING_SEEDS, (42, 43, 44, 45, 46))
 
     def test_theoretical_costs_match_frozen_budget(self):
         self.assertEqual(theoretical_costs(3576), (178800, 5600))
@@ -152,7 +157,7 @@ class FrozenMLPContractTests(unittest.TestCase):
 
 @unittest.skipUnless(HAS_TORCH, "PyTorch indisponível")
 class TorchMLPComponentTests(unittest.TestCase):
-    """Treinos curtos e sintéticos; nenhum chama ``train_blocks`` com 42–46."""
+    """Treinos curtos e sintéticos; seeds oficiais só validam gates e pareamento."""
 
     @staticmethod
     def _trained(view, *, seed=7, family="mlp_centralized", client_id=None,
@@ -196,6 +201,22 @@ class TorchMLPComponentTests(unittest.TestCase):
         with self.assertRaises(MLPError):
             final_state(network)
 
+    def test_build_network_is_deterministic_without_advancing_global_rng(self):
+        import torch
+
+        torch.manual_seed(1234)
+        rng_before = torch.random.get_rng_state().clone()
+        first = build_network()
+        rng_after = torch.random.get_rng_state().clone()
+        second = build_network()
+
+        self.assertTrue(torch.equal(rng_before, rng_after))
+        self.assertTrue(torch.equal(rng_before, torch.random.get_rng_state()))
+        first_state = first.state_dict()
+        second_state = second.state_dict()
+        self.assertTrue(all(torch.equal(first_state[key], second_state[key])
+                            for key in first_state))
+
     def test_paired_initialization_is_deterministic_cloned_and_rng_isolated(self):
         import torch
 
@@ -205,9 +226,12 @@ class TorchMLPComponentTests(unittest.TestCase):
         first = initial_state_dict(42)
         actual_next = torch.rand(4)
         second = initial_state_dict(42)
+        different_seed = initial_state_dict(43)
         self.assertTrue(torch.equal(expected_next, actual_next))
         self.assertEqual(set(first), set(second))
         self.assertTrue(all(torch.equal(first[key], second[key]) for key in first))
+        self.assertTrue(any(not torch.equal(first[key], different_seed[key])
+                            for key in first))
 
         clone_a = clone_state_dict(first)
         clone_b = clone_state_dict(first)
@@ -217,6 +241,85 @@ class TorchMLPComponentTests(unittest.TestCase):
         self.assertTrue(torch.equal(clone_b[key], first[key]))
         with self.assertRaises(SeedingError):
             initial_state_dict(7)
+
+    def test_official_training_seed_rejects_unpaired_state_before_training(self):
+        import torch
+
+        state = initial_state_dict(42)
+        snapshot = clone_state_dict(state)
+        network = build_network()
+        with mock.patch("torch.optim.Adam") as adam:
+            with self.assertRaisesRegex(
+                MLPError,
+                "initial_state não corresponde.*training_seed",
+            ):
+                train_blocks(
+                    network, _view(8), model_family="mlp_centralized",
+                    training_seed=43, initial_state=state,
+                    blocks=1, epochs_per_block=1, batch_size=8,
+                    shuffle_seed_fn=_synthetic_shuffle_seed,
+                )
+        adam.assert_not_called()
+        self.assertTrue(all(torch.equal(state[key], snapshot[key]) for key in state))
+
+    def test_official_training_seed_accepts_paired_state_and_proceeds(self):
+        import torch
+
+        state = initial_state_dict(44)
+        network = build_network()
+        report = train_blocks(
+            network, _view(8), model_family="mlp_centralized",
+            training_seed=44, initial_state=state,
+            blocks=1, epochs_per_block=1, batch_size=8,
+            shuffle_seed_fn=_synthetic_shuffle_seed,
+        )
+        self.assertEqual(report.training_seed, 44)
+        self.assertEqual(report.optimizer_steps, 1)
+        self.assertEqual(report.examples_processed, 8)
+        self.assertEqual(report.optimizer_steps, report.theoretical_steps)
+        trained_state = final_state(network)
+        self.assertTrue(any(
+            not torch.equal(trained_state[key], state[key])
+            for key in trained_state
+        ))
+
+    def test_pairing_validation_preserves_global_rng_on_accept_and_reject(self):
+        import torch
+
+        original_validation = mlp_module._validated_initial_state
+        observed = []
+
+        def spy(initial_state, training_seed, torch_module):
+            before = torch.random.get_rng_state().clone()
+            try:
+                return original_validation(initial_state, training_seed, torch_module)
+            finally:
+                observed.append(torch.equal(before, torch.random.get_rng_state()))
+
+        with mock.patch.object(mlp_module, "_validated_initial_state", spy):
+            accepted = train_blocks(
+                build_network(), _view(8), model_family="mlp_centralized",
+                training_seed=44, initial_state=initial_state_dict(44),
+                blocks=1, epochs_per_block=1, batch_size=8,
+                shuffle_seed_fn=_synthetic_shuffle_seed,
+            )
+            self.assertEqual(accepted.optimizer_steps, 1)
+
+            rejected_network = build_network()
+            rejected_state = initial_state_dict(42)
+            rng_before_rejection = torch.random.get_rng_state().clone()
+            with self.assertRaisesRegex(MLPError, "não corresponde"):
+                train_blocks(
+                    rejected_network, _view(8), model_family="mlp_centralized",
+                    training_seed=43, initial_state=rejected_state,
+                    blocks=1, epochs_per_block=1, batch_size=8,
+                    shuffle_seed_fn=_synthetic_shuffle_seed,
+                )
+            self.assertTrue(torch.equal(
+                rng_before_rejection, torch.random.get_rng_state(),
+            ))
+
+        self.assertEqual(observed, [True, True])
 
     def test_same_state_data_and_seed_produce_identical_training(self):
         import torch

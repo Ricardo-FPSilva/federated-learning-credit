@@ -29,7 +29,11 @@ import random
 from typing import Mapping
 
 from research.benchmark.data import DatasetView
-from research.benchmark.seeding import paired_initialization_seed, shuffle_seed
+from research.benchmark.seeding import (
+    TRAINING_SEEDS,
+    paired_initialization_seed,
+    shuffle_seed,
+)
 
 BLOCKS = 10
 EPOCHS_PER_BLOCK = 5
@@ -169,13 +173,14 @@ def _validated_network(network, torch):
 def build_network():
     """Cria a arquitetura congelada; a última camada devolve logits."""
     torch = _torch()
-    return torch.nn.Sequential(
-        torch.nn.Linear(ARCHITECTURE.input_features, ARCHITECTURE.hidden_1),
-        torch.nn.ReLU(),
-        torch.nn.Linear(ARCHITECTURE.hidden_1, ARCHITECTURE.hidden_2),
-        torch.nn.ReLU(),
-        torch.nn.Linear(ARCHITECTURE.hidden_2, ARCHITECTURE.output_features),
-    )
+    with torch.random.fork_rng(devices=[]):
+        return torch.nn.Sequential(
+            torch.nn.Linear(ARCHITECTURE.input_features, ARCHITECTURE.hidden_1),
+            torch.nn.ReLU(),
+            torch.nn.Linear(ARCHITECTURE.hidden_1, ARCHITECTURE.hidden_2),
+            torch.nn.ReLU(),
+            torch.nn.Linear(ARCHITECTURE.hidden_2, ARCHITECTURE.output_features),
+        )
 
 
 def build_loss():
@@ -203,6 +208,35 @@ def initial_state_dict(training_seed: int) -> dict:
         torch.manual_seed(derived_seed)
         network = build_network()
     return clone_state_dict(network.state_dict())
+
+
+def _validated_initial_state(initial_state: Mapping, training_seed: int, torch) -> dict:
+    """Copia o estado e confere o pareamento exigido para seeds oficiais."""
+    _require(isinstance(initial_state, Mapping),
+             "initial_state deve ser Mapping")
+    state = clone_state_dict(initial_state)
+    if training_seed not in TRAINING_SEEDS:
+        return state
+
+    expected = initial_state_dict(training_seed)
+    same_structure = (
+        state.keys() == expected.keys()
+        and all(
+            state[name].shape == expected[name].shape
+            for name in state
+        )
+    )
+    if same_structure:
+        paired = all(
+            state[name].dtype == expected[name].dtype
+            and torch.equal(state[name].detach().cpu(), expected[name])
+            for name in state
+        )
+        _require(
+            paired,
+            "initial_state não corresponde à inicialização emparelhada de training_seed",
+        )
+    return state
 
 
 def final_state(network) -> dict:
@@ -275,13 +309,14 @@ def train_blocks(network, train_view: DatasetView, *, model_family: str,
              and math.isfinite(float(learning_rate)) and learning_rate > 0,
              "learning_rate deve ser número finito positivo")
     _require(callable(shuffle_seed_fn), "shuffle_seed_fn deve ser chamável")
-    _require(isinstance(initial_state, Mapping),
-             "initial_state deve ser Mapping")
 
     torch = _torch()
     network = _validated_network(network, torch)
+    validated_initial_state = _validated_initial_state(
+        initial_state, training_seed, torch,
+    )
     try:
-        network.load_state_dict(clone_state_dict(initial_state), strict=True)
+        network.load_state_dict(validated_initial_state, strict=True)
     except RuntimeError as exc:
         raise MLPError("initial_state incompatível com a arquitetura") from exc
 
