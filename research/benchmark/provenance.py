@@ -31,18 +31,20 @@ from research.benchmark.seeding import TRAINING_SEEDS, canonical_json_bytes
 from research.data.pipeline import load_record
 
 # Manifesto default completo dos arquivos .py executados atualmente pela
-# infraestrutura E3.1A e pelos modelos clássicos E3.1B: pacote
+# infraestrutura E3.1A, pelos modelos clássicos E3.1B.1 e pelos componentes
+# MLP E3.1B.2: pacote
 # research.benchmark, suas dependências em research.data e contracts, e o
 # pacote pai research. Um teste de cobertura falha se um novo .py aparecer
 # sob esses diretórios sem ser registrado aqui. A E3.2 deverá acrescentar ao
-# manifesto (via source_files) os novos arquivos executados — treino, FedAvg
-# e runner — antes de qualquer execução oficial.
+# manifesto (via source_files) os novos arquivos executados — FedAvg, runner e
+# demais módulos — antes de qualquer execução oficial.
 DEFAULT_SOURCE_FILES = (
     "research/__init__.py",
     "research/benchmark/__init__.py",
     "research/benchmark/classic.py",
     "research/benchmark/data.py",
     "research/benchmark/evaluation.py",
+    "research/benchmark/mlp.py",
     "research/benchmark/provenance.py",
     "research/benchmark/seeding.py",
     "research/data/__init__.py",
@@ -142,7 +144,7 @@ def build_provenance(repo_root: str | Path, *, dataset_path: str | Path,
     SHA-256; o default cobre todos os arquivos ``.py`` executados atualmente
     (``research.benchmark``, ``research.data``, ``contracts`` e ``research``).
     Execuções E3.2 devem passar ``source_files`` acrescido dos novos módulos
-    executados (treino, FedAvg, runner e demais modelos); alterar qualquer
+    executados (FedAvg, runner e demais modelos); alterar qualquer
     dependência listada muda o ``run_id``. O estado dirty e o ambiente ficam em
     ``operational`` e não alteram o ``run_id``.
     """
